@@ -11,7 +11,12 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * modbus 通讯页面
+ * @author created by barrett in 2020/11/27 22:28
+ **/
 public class FormModbusTcp extends JDialog {
+
 
 
     public FormModbusTcp(){
@@ -34,7 +39,7 @@ public class FormModbusTcp extends JDialog {
 
     private ModbusTcpNet modbusTcpNet = null;
     private JPanel panelContent = null;
-    private String defaultAddress = "100";
+    private String defaultAddress = "0";
     private UserControlReadWriteOp userControlReadWriteOp1 = null;
 
 
@@ -74,7 +79,7 @@ public class FormModbusTcp extends JDialog {
 
         JTextField textField1 = new JTextField();
         textField1.setBounds(62,14,106, 23);
-        textField1.setText("192.168.0.10");
+        textField1.setText("127.0.0.1");
         panelConnect.add(textField1);
 
         JLabel label2 = new JLabel("Port：");
@@ -143,6 +148,7 @@ public class FormModbusTcp extends JDialog {
                         DemoUtils.SetPanelEnabled(panelContent,true);
                         button2.setEnabled(true);
                         button1.setEnabled(false);
+                        //连接时，设置协议对象
                         userControlReadWriteOp1.SetReadWriteNet(modbusTcpNet, defaultAddress, 10);
                     }
                     else {
